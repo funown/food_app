@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:food_app/util/size_config.dart';
-
-import 'nav_item.dart';
 
 class BottomNavBar extends StatefulWidget {
   const BottomNavBar({
@@ -20,14 +19,13 @@ class BottomNavBar extends StatefulWidget {
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  List<NavItem> items = [];
+  List<Widget> items = [];
   int _selectedIndex = 0;
 
   @override
   void initState() {
     super.initState();
     _selectedIndex = widget.selectedIndex;
-    createNavItems();
   }
 
   @override
@@ -53,33 +51,57 @@ class _BottomNavBarState extends State<BottomNavBar> {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            ...items,
-          ],
+          children: createNavItems(),
         ),
       ),
     );
   }
 
-  void createNavItems() {
+  List<Widget> createNavItems() {
+    List<Widget> navItems = [];
     for (var i = 0; i < widget.iconItems.length; i++) {
       var icon = widget.iconItems[i];
-      setState(() {
-        items.add(NavItem(
-          selected: i == _selectedIndex,
-          icon: icon,
+      bool isSelected = (_selectedIndex == i);
+      navItems.add(
+        InkWell(
+          splashColor: Colors.transparent,
           onTap: () {
-            if (widget.onTap != null) {
-              widget.onTap(i);
-              setState(() {
-                _selectedIndex = i;
-                items.clear();
-                createNavItems();
-              });
-            }
+            setState(() {
+              _selectedIndex = i;
+              widget.onTap(_selectedIndex);
+            });
           },
-        ));
-      });
+          child: AnimatedContainer(
+            duration: Duration(milliseconds: 200),
+            padding: EdgeInsets.only(
+              top: getProportionateScreenHeight(24),
+            ),
+            width: getProportionateScreenWidth(30),
+            child: Column(
+              children: [
+                SvgPicture.asset(
+                  icon,
+                  width: 22,
+                  color: isSelected ? Colors.blue : Colors.grey,
+                ),
+                SizedBox(
+                  height: getProportionateScreenHeight(9.5),
+                ),
+                AnimatedContainer(
+                  width: isSelected ? getProportionateScreenWidth(30) : 0,
+                  height: getProportionateScreenHeight(4),
+                  decoration: BoxDecoration(
+                    color: Colors.blue,
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  duration: Duration(milliseconds: 200),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
     }
+    return navItems;
   }
 }

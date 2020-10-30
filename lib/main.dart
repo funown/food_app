@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
             color: kHeadingColor,
           ),
         ),
+        splashColor: Colors.transparent,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       debugShowCheckedModeBanner: false,

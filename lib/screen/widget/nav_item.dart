@@ -17,11 +17,12 @@ class NavItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return AnimatedContainer(
       padding: EdgeInsets.only(
         top: getProportionateScreenHeight(24),
       ),
       width: getProportionateScreenWidth(30),
+      duration: Duration(milliseconds: 500),
       child: GestureDetector(
         onTap: onTap,
         child: Column(
