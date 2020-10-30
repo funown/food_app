@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:food_app/screen/widget/bottom_nav_bar.dart';
 import 'package:food_app/util/size_config.dart';
+import 'package:food_app/screen/widget/bottom_nav_bar.dart';
 
 import 'header.dart';
 import 'shop_section.dart';

@@ -8,12 +8,11 @@ class HomeScreen extends StatelessWidget {
   static String routeName = "/home";
   @override
   Widget build(BuildContext context) {
+    // init SizeConfig to get screen size
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: kBackgroundColor,
       body: Body(),
-      extendBody: true,
-      extendBodyBehindAppBar: true,
     );
   }
 }
