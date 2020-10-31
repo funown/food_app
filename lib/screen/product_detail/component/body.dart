@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_app/model/product.dart';
+import 'package:food_app/screen/product_detail/product_detail_screen.dart';
 import 'package:food_app/util/constant.dart';
 import 'package:food_app/util/size_config.dart';
 import 'package:food_app/screen/widget/default_button.dart';

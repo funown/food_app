@@ -29,6 +29,7 @@ dependencies:
   dotted_border: ^1.0.6
   google_fonts: ^1.1.1
   flutter_svg: ^0.19.1
+  provider: ^4.3.2+2
 
 dev_dependencies:
   flutter_test:

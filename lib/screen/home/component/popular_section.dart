@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/screen/model/current_product_model.dart';
 import 'package:food_app/util/size_config.dart';
 import 'package:food_app/service/popular_api.dart';
 import 'package:food_app/screen/widget/icon_block.dart';
 import 'package:food_app/screen/product_detail/product_detail_screen.dart';
-
+import 'package:provider/provider.dart';
 import 'product_card.dart';
 import 'section_title_block.dart';
 
-class PopularSection extends StatelessWidget {
+class PopularSection extends StatefulWidget {
   const PopularSection({
     Key key,
   }) : super(key: key);
 
+  @override
+  _PopularSectionState createState() => _PopularSectionState();
+}
+
+class _PopularSectionState extends State<PopularSection> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -41,6 +47,9 @@ class PopularSection extends StatelessWidget {
             (index) => ProductCard(
               product: populars[index],
               onTap: () {
+                context
+                    .read<CurrentProductModel>()
+                    .setCurrentProduct(populars[index]);
                 Navigator.pushNamed(
                   context,
                   ProductDetailScreen.routeName,

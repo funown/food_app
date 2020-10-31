@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:food_app/screen/shop_detail/shop_detail_screen.dart';
+import 'package:food_app/service/shop_api.dart';
+import 'package:provider/provider.dart';
 import 'package:food_app/model/product.dart';
-import 'package:food_app/screen/cart/cart_screen.dart';
-import 'package:food_app/service/cart_api.dart';
 import 'package:food_app/util/constant.dart';
 import 'package:food_app/util/size_config.dart';
+import 'package:food_app/service/cart_api.dart';
+import 'package:food_app/service/popular_api.dart';
+import 'package:food_app/screen/cart/cart_screen.dart';
 import 'package:food_app/screen/widget/custom_app_bar.dart';
 import 'package:food_app/screen/widget/rounded_icon_btn.dart';
 import 'package:food_app/screen/widget/icon_btn_with_num_badge.dart';
+import 'package:food_app/screen/model/current_product_model.dart';
 
 import 'component/body.dart';
 
@@ -25,27 +30,25 @@ class ProductDetailScreen extends StatefulWidget {
   static String routeName = "/detail/product";
 
   @override
-  _ProductDetailScreenState createState() => _ProductDetailScreenState();
+  ProductDetailScreenState createState() => ProductDetailScreenState();
 }
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
+class ProductDetailScreenState extends State<ProductDetailScreen> {
   int _pageIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     final ProductDetailScreenArguments arguments =
         ModalRoute.of(context).settings.arguments;
-    setState(() {
-      _pageIndex = arguments.index;
-    });
     return Scaffold(
       appBar: buildCustomAppBar(context, arguments),
       body: Body(
         index: arguments.index,
         productList: arguments.productList,
         onPageChange: (value) {
-          setState(() {
-            _pageIndex = value;
-          });
+          context
+              .read<CurrentProductModel>()
+              .setCurrentProduct(populars[value]);
         },
       ),
     );
@@ -77,13 +80,22 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              arguments.productList[_pageIndex].shop,
+              '${context.watch<CurrentProductModel>().currentProduct.shop}',
               style: kHeadingStyle.copyWith(
                 fontSize: getProportionateScreenWidth(16),
               ),
             ),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                // get shop data
+                shops.forEach((element) {
+                  if (element.title ==
+                      context.read<CurrentProductModel>().currentProduct.shop) {
+                    Navigator.pushNamed(context, ShopDetailScreen.routeName,
+                        arguments: ShopDetailScreenArguments(shop: element));
+                  }
+                });
+              },
               child: Text(
                 "Go to restaurant",
                 style: TextStyle(

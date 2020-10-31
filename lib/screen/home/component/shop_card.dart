@@ -51,7 +51,10 @@ class ShopCard extends StatelessWidget {
                   getProportionateScreenWidth(8),
                 ),
               ),
-              child: Image.asset(shop.image),
+              child: Hero(
+                tag: shop.id,
+                child: Image.asset(shop.image),
+              ),
             ),
             SizedBox(
               height: getProportionateScreenHeight(10),

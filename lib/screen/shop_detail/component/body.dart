@@ -39,8 +39,11 @@ class Body extends StatelessWidget {
                       borderRadius: BorderRadius.circular(
                         getProportionateScreenWidth(16),
                       ),
-                      image: DecorationImage(
-                        image: AssetImage(shop.image),
+                    ),
+                    child: Hero(
+                      tag: shop.id,
+                      child: Image.asset(
+                        shop.image,
                         fit: BoxFit.fill,
                       ),
                     ),
