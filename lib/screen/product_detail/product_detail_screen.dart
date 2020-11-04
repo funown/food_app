@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:food_app/screen/shop_detail/shop_detail_screen.dart';
-import 'package:food_app/service/shop_api.dart';
 import 'package:provider/provider.dart';
 import 'package:food_app/model/product.dart';
 import 'package:food_app/util/constant.dart';
 import 'package:food_app/util/size_config.dart';
+import 'package:food_app/service/shop_api.dart';
 import 'package:food_app/service/cart_api.dart';
 import 'package:food_app/service/popular_api.dart';
 import 'package:food_app/screen/cart/cart_screen.dart';
 import 'package:food_app/screen/widget/custom_app_bar.dart';
 import 'package:food_app/screen/widget/rounded_icon_btn.dart';
 import 'package:food_app/screen/widget/icon_btn_with_num_badge.dart';
+import 'package:food_app/screen/shop_detail/shop_detail_screen.dart';
 import 'package:food_app/screen/model/current_product_model.dart';
 
 import 'component/body.dart';

@@ -1,16 +1,26 @@
-# food_app
+# Food Delivery App UI (Flutter UI)
 
-A new Flutter project.
+The UI design source:  [Go to the source website](https://freebiesui.com/figma-freebies/food-delivery-app-design/)
 
-## Getting Started
+## Dependencies
+* flutter_staggered_grid_view
+* dotted_border
+* flutter_svg
+* provider
 
-This project is a starting point for a Flutter application.
+## Screenshot
 
-A few resources to get you started if this is your first Flutter project:
+Home Page
+![home page #1](./screenshot/Screenshot_1604408557.png)
+![home page #2](./screenshot/Screenshot_1604409076.png)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Product detail Page
+![product detail](./screenshot/Screenshot_1604409139.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Shop detail Page
+![shop detail #1](./screenshot/Screenshot_1604409231.png)
+![shop detail #2](./screenshot/Screenshot_1604409291.png)
+
+Cart Page
+![cart page](./screenshot/Screenshot_1604409199.png)
+
